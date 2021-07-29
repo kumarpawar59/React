@@ -3,20 +3,9 @@ import "./App.css";
 import { useState } from "react";
 
 function App() {
-  const [list, setList] = useState(["hello"]);
-
-  const myfun = (item) => {
-    const list1 = [...list, "Kunal"];
-    setList(list1);
-  };
+ 
   return (
-    <div>
-      <h1>Hello</h1>
-      <input type="button" value="Say Hello" onClick={myfun} />
-      {list.map((item) => {
-        return <h1>{item}</h1>;
-      })}
-    </div>
+    <h1 className="bg-primary my-4 p-3 text-light ">Hello India....</h1>
   );
 }
 
