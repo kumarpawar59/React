@@ -3,16 +3,36 @@ import "./App.css";
 import { useState } from "react";
 
 function App() {
-  let [list, setlist] = useState(["delhi", "mumbai"]);
-  let [num, setnum] = useState(100);
-  let [name, setname] = useState("rahul");
+  let [counter, setcounter] = useState(0);
+
+  let valueincrease = () => {
+    let res = counter + 100;
+    setcounter(res);
+  };
+
+  let [list, setlist] = useState("kumar");
+
+  let adddata = () => {
+    let name = [...list, "Student name list"];
+    setlist(name);
+  };
 
   return (
     <div>
-      <h1>statetful continiue </h1>
-      <h1>list :: {list}</h1>
-      <h1>number :: {num}</h1>
-      <h1>string :: {name}</h1>
+      <h1>statefull continiue</h1>
+      <h1>
+        counter :: 👍{counter}
+        <input type="button" value="count" onClick={valueincrease} />
+      </h1>
+      <hr />
+
+      <h1>
+        <input type="button" value="Say Hello" onClick={adddata} />
+        String :: 👍 {list}
+       
+      </h1>
+
+     
     </div>
   );
 }
