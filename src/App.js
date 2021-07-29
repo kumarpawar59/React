@@ -2,13 +2,16 @@ import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
-  let id = "100";
-  let name = "kumar";
-  let city = "pune";
+  let title = "Function Call";
+  let list = ["hello"];
+
   return (
     <div>
-      <h1>{name},{city}</h1>
-      <h1>{id}</h1>
+      <h1>{title}</h1>
+      <input type="button" value="Say Hello" />
+      {list.map((item) => {
+        return <h2>{item}</h2>;
+      })}
     </div>
   );
 }
