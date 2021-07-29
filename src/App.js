@@ -1,16 +1,20 @@
 import logo from "./logo.svg";
 import "./App.css";
+import { useState } from "react";
 
 function App() {
-  let title = "Function Call";
-  let list = ["hello"];
+  const [list, setList] = useState(["hello"]);
 
+  const myfun = (item) => {
+    const list1 = [...list, "Kunal"];
+    setList(list1);
+  };
   return (
     <div>
-      <h1>{title}</h1>
-      <input type="button" value="Say Hello" />
+      <h1>Hello</h1>
+      <input type="button" value="Say Hello" onClick={myfun} />
       {list.map((item) => {
-        return <h2>{item}</h2>;
+        return <h1>{item}</h1>;
       })}
     </div>
   );
