@@ -3,20 +3,16 @@ import "./App.css";
 import { useState } from "react";
 
 function App() {
-  let [name] = useState("kumar");
-  let [counter] = useState(100);
-  let [active] = useState(true);
-  let [obj] = useState({ name: "nam" });
-  let [list] = useState(["Akshay", "Raj"]);
+  let [list, setlist] = useState(["delhi", "mumbai"]);
+  let [num, setnum] = useState(100);
+  let [name, setname] = useState("rahul");
 
   return (
-    <div className="p-4 ">
-      <h1>String  :: {name}</h1>
-      <h1>number  :: {counter}</h1>
-      <h1>Boolean :: {active +""}</h1>
-      <h1>object  :: {JSON.stringify(obj)}</h1>
-      <h1> Array  :: {list}</h1>
-      <h1>obj   :: {obj.name}</h1>
+    <div>
+      <h1>statetful continiue </h1>
+      <h1>list :: {list}</h1>
+      <h1>number :: {num}</h1>
+      <h1>string :: {name}</h1>
     </div>
   );
 }
