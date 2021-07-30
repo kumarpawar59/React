@@ -2,39 +2,40 @@ import logo from "./logo.svg";
 import "./App.css";
 import { useState } from "react";
 
-function App() {
-  let [counter, setcounter] = useState(0);
-
-  let valueincrease = () => {
-    let res = counter + 100;
-    setcounter(res);
-  };
-
-  let [list, setlist] = useState("kumar");
-
-  let adddata = () => {
-    let name = [...list, "Student name list"];
-    setlist(name);
-  };
-
+export default function App() {
   return (
     <div>
-      <h1>statefull continiue</h1>
-      <h1>
-        counter :: 👍{counter}
-        <input type="button" value="count" onClick={valueincrease} />
-      </h1>
-      <hr />
-
-      <h1>
-        <input type="button" value="Say Hello" onClick={adddata} />
-        String :: 👍 {list}
-       
-      </h1>
-
-     
+ 
+      <HelloUniverse/>
+      <Hello/>
+      <HelloUniverse/>
+      <Hello/>
+      <HelloUniverse/>
+      <Hello/>
+      <HelloUniverse/>
+      <Hello/>
+      <HelloUniverse/>
+      <Hello/> <HelloUniverse/>
+      <Hello/>
+      <HelloUniverse/>
+      <Hello/>
+      <HelloUniverse/>
+      <Hello/>
+      <HelloUniverse/>
+      <Hello/>
+      <HelloUniverse/>
+      <Hello/>
+      
     </div>
   );
 }
 
-export default App;
+function Hello() {
+  return <h1>Hello India</h1>;
+}
+
+function HelloUniverse() {
+  return <h1>Hello Brother.....</h1>;
+}
+
+
