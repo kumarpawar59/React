@@ -2,17 +2,18 @@ import logo from "./logo.svg";
 import "./App.css";
 import { useState } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
+// import { Page1 } from "./Pages/Page1";
+// import { Page2 } from "./Pages/Page2";
 
 export default function App() {
   return (
     <BrowserRouter>
-
-    {/* //<Route exact={true} path="/Page1" component={Page1}/>     */}
-    <Page1/>
-     <Page2/>
-     <Page3/>
+      <Route exact={true} path="/Page1" component={Page1}/>
+      <Route exact={true} path="/Page2" component={Page2}/>
+      <Route exact={true} path="/Page3" component={Page3}/>
+      
+      
     </BrowserRouter>
-    
   );
 }
 
@@ -20,7 +21,8 @@ export default function App() {
 //   return <h1>Hello India</h1>;
 // }
 
-function Page1() {
+
+ function Page1() {
   return (
     <div classname="p-1 ">
       <h3 className="bg-success p-1 my-3 text-light">Goa</h3>
@@ -62,6 +64,7 @@ function Page2() {
     </div>
   );
 }
+
 
 function Page3() {
   return (
