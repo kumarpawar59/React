@@ -1,15 +1,18 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { useState } from "react";
+import { BrowserRouter, Route } from "react-router-dom";
 
 export default function App() {
   return (
-    <div>
-      <HelloUniverse />
-      <Helloworld /> 
-      <HelloUniverse />
-      <Helloworld />
-    </div>
+    <BrowserRouter>
+
+    {/* //<Route exact={true} path="/Page1" component={Page1}/>     */}
+    <Page1/>
+     <Page2/>
+     <Page3/>
+    </BrowserRouter>
+    
   );
 }
 
@@ -17,10 +20,10 @@ export default function App() {
 //   return <h1>Hello India</h1>;
 // }
 
-function HelloUniverse() {
+function Page1() {
   return (
     <div classname="p-1 ">
-      <h3 className="bg-success p-1 my-3 text-light">About Us*</h3>
+      <h3 className="bg-success p-1 my-3 text-light">Goa</h3>
       <p className="bg-warning p-1 my-3 ">
         A well-organized paragraph supports or develops a single controlling
         idea, which is expressed in a sentence called the topic sentence. A
@@ -40,19 +43,42 @@ function HelloUniverse() {
   );
 }
 
-function Helloworld() {
+function Page2() {
   return (
     <div>
-      <h3 className="bg-danger p-1 my-3 text-light " >Home</h3>
-      <p className="bg-primary p-1 my-3 ">Parallel structures are created by constructing two or more phrases or 
-        sentences that have the same grammatical structure and use the same parts
-        of speech. By creating parallel structures you make your sentences 
+      <h3 className="bg-danger p-1 my-3 text-light ">Pune</h3>
+      <p className="bg-primary p-1 my-3 ">
+        Parallel structures are created by constructing two or more phrases or
+        sentences that have the same grammatical structure and use the same
+        parts of speech. By creating parallel structures you make your sentences
         clearer and easier to read. In addition, repeating a pattern in a series
-        of consecutive sentences helps your reader see the connections between 
-        ideas. In the paragraph above about scientists and the sense of sight, 
-        several sentences in the body of the paragraph have been constructed in           a parallel way. The parallel structures (which have been emphasized) 
-        help the reader see that the paragraph is organized as a set of
-        examples of a general statement.</p>
+        of consecutive sentences helps your reader see the connections between
+        ideas. In the paragraph above about scientists and the sense of sight,
+        several sentences in the body of the paragraph have been constructed in
+        a parallel way. The parallel structures (which have been emphasized)
+        help the reader see that the paragraph is organized as a set of examples
+        of a general statement.
+      </p>
+    </div>
+  );
+}
+
+function Page3() {
+  return (
+    <div>
+      <h3 className="bg-danger p-1 my-3 text-light ">Nashik</h3>
+      <p className="bg-primary p-1 my-3 ">
+        Parallel structures are created by constructing two or more phrases or
+        sentences that have the same grammatical structure and use the same
+        parts of speech. By creating parallel structures you make your sentences
+        clearer and easier to read. In addition, repeating a pattern in a series
+        of consecutive sentences helps your reader see the connections between
+        ideas. In the paragraph above about scientists and the sense of sight,
+        several sentences in the body of the paragraph have been constructed in
+        a parallel way. The parallel structures (which have been emphasized)
+        help the reader see that the paragraph is organized as a set of examples
+        of a general statement.
+      </p>
     </div>
   );
 }
