@@ -1,28 +1,44 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { useState } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Link } from "react-router-dom";
 // import { Page1 } from "./Pages/Page1";
 // import { Page2 } from "./Pages/Page2";
 
 export default function App() {
   return (
     <BrowserRouter>
-      <Route exact={true} path="/Page1" component={Page1}/>
-      <Route exact={true} path="/Page2" component={Page2}/>
-      <Route exact={true} path="/Page3" component={Page3}/>
-      
-      
+      <NavMenu />
+      <Route exact={true} path="/Page1" component={Page1} />
+      <Route exact={true} path="/Page2" component={Page2} />
+      <Route exact={true} path="/Page3" component={Page3} />
+      <Route exact={true} path="/" component={Page} />
     </BrowserRouter>
   );
 }
 
-// function Hello() {
-//   return <h1>Hello India</h1>;
-// }
+function NavMenu() {
+  return (
+    <div>
+      <Link to="/Page1">Gao Route..</Link>
+      <hr></hr>
+      <Link to="/Page2">Pune Route</Link>
+      <hr></hr>
+      <Link to="/Page3">Nashik Route</Link>
+      <hr></hr>
+    </div>
+  );
+}
 
+function Page() {
+  return (
+    <div>
+      <h1 className="bg-success p-1 my-3 text-light">Welcome To Cdac</h1>
+    </div>
+  );
+}
 
- function Page1() {
+function Page1() {
   return (
     <div classname="p-1 ">
       <h3 className="bg-success p-1 my-3 text-light">Goa</h3>
@@ -64,7 +80,6 @@ function Page2() {
     </div>
   );
 }
-
 
 function Page3() {
   return (
