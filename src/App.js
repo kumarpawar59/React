@@ -1,84 +1,145 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { useState } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function App() {
   return (
-    <BrowserRouter>
-
-    {/* //<Route exact={true} path="/Page1" component={Page1}/>     */}
-    <Page1/>
-     <Page2/>
-     <Page3/>
-    </BrowserRouter>
-    
-  );
-}
-
-// function Hello() {
-//   return <h1>Hello India</h1>;
-// }
-
-function Page1() {
-  return (
-    <div classname="p-1 ">
-      <h3 className="bg-success p-1 my-3 text-light">Goa</h3>
-      <p className="bg-warning p-1 my-3 ">
-        A well-organized paragraph supports or develops a single controlling
-        idea, which is expressed in a sentence called the topic sentence. A
-        topic sentence has several important functions: it substantiates or
-        supports an essay’s thesis statement; it unifies the content of a
-        paragraph and directs the order of the sentences; and it advises the
-        reader of the subject to be discussed and how the paragraph will discuss
-        it. Readers generally look to the first few sentences in a paragraph to
-        determine the subject and perspective of the paragraph. That’s why it’s
-        often best to put the topic sentence at the very beginning of the
-        paragraph. In some cases, however, it’s more effective to place another
-        sentence before the topic sentence—for example, a sentence linking the
-        current paragraph to the previous one, or one providing background
-        information.
-      </p>
+    <div>
+      <MyRegisterComponent />
     </div>
   );
 }
 
-function Page2() {
-  return (
-    <div>
-      <h3 className="bg-danger p-1 my-3 text-light ">Pune</h3>
-      <p className="bg-primary p-1 my-3 ">
-        Parallel structures are created by constructing two or more phrases or
-        sentences that have the same grammatical structure and use the same
-        parts of speech. By creating parallel structures you make your sentences
-        clearer and easier to read. In addition, repeating a pattern in a series
-        of consecutive sentences helps your reader see the connections between
-        ideas. In the paragraph above about scientists and the sense of sight,
-        several sentences in the body of the paragraph have been constructed in
-        a parallel way. The parallel structures (which have been emphasized)
-        help the reader see that the paragraph is organized as a set of examples
-        of a general statement.
-      </p>
-    </div>
-  );
-}
+function MyRegisterComponent() {
+  let [userList, setUserList] = useState([]);
 
-function Page3() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [mobile, setMobile] = useState("");
+
+  const usernameChangeHandler = (e) => setUsername(e.target.value);
+  const passwordChangeHandler = (e) => setPassword(e.target.value);
+  const emailChangeHandler = (e) => setEmail(e.target.value);
+  const mobileChangeHandler = (e) => setMobile(e.target.value);
+
+  useEffect(() => {
+    readAllUser();
+  }, []);
+
+  const readAllUser = async () => {
+    let url = "http://localhost:4000/user-list";
+    const response = await axios.get(url);
+    // setUserList(response.data);
+    setUserList(response.data.reverse());
+  };
+
+  const addNewUser = async () => {
+    const newuser = {
+      id: userList.length + 1,
+      username: username,
+      password: password,
+      email: email,
+      mobile: mobile,
+    };
+
+    const newUserList = [newuser, ...userList];
+    setUserList(newUserList);
+
+    // MAKE THE API CALL
+    let url = "http://localhost:4000/user-create";
+    // await axios.post(url, newuser);
+    await axios.post(url, { ...newuser, id: null });
+
+    // After Success
+    setUsername("");
+    setPassword("");
+    setEmail("");
+    setMobile("");
+  };
+
   return (
     <div>
-      <h3 className="bg-danger p-1 my-3 text-light ">Nashik</h3>
-      <p className="bg-primary p-1 my-3 ">
-        Parallel structures are created by constructing two or more phrases or
-        sentences that have the same grammatical structure and use the same
-        parts of speech. By creating parallel structures you make your sentences
-        clearer and easier to read. In addition, repeating a pattern in a series
-        of consecutive sentences helps your reader see the connections between
-        ideas. In the paragraph above about scientists and the sense of sight,
-        several sentences in the body of the paragraph have been constructed in
-        a parallel way. The parallel structures (which have been emphasized)
-        help the reader see that the paragraph is organized as a set of examples
-        of a general statement.
-      </p>
+      <h1 className="bg-dark text-light p-3 ">User Registeation </h1>
+
+      {/** FORM COMPONENT */}
+      <form className="m-2">
+        <div>
+          <input
+            type="text"
+            className="form-control form-control-lg mb-1"
+            placeholder="Enter username"
+            value={username}
+            onChange={usernameChangeHandler}
+          />
+        </div>
+
+        <div>
+          <input
+            type="password"
+            className="form-control form-control-lg mb-1"
+            placeholder="Enter Passwword"
+            value={password}
+            onChange={passwordChangeHandler}
+          />
+        </div>
+
+        <div>
+          <input
+            type="email"
+            className="form-control form-control-lg mb-1"
+            placeholder="Enter Email"
+            value={email}
+            onChange={emailChangeHandler}
+          />
+        </div>
+
+        <div>
+          <input
+            type="mobile"
+            className="form-control form-control-lg mb-1"
+            placeholder="Enter Mobile"
+            value={mobile}
+            onChange={mobileChangeHandler}
+          />
+        </div>
+
+        <div>
+          <input
+            type="button"
+            value="Register"
+            onClick={addNewUser}
+            className="btn btn-lg btn-secondary w-100"
+          />
+        </div>
+      </form>
+
+      {/** List BOX HERE */}
+      <table className="table table-dark table-striped m-2">
+        <thead>
+          <tr>
+            <th scope="col">#ID</th>
+            <th scope="col">USERNAME</th>
+            <th scope="col">PASSWORD</th>
+            <th scope="col">EMAIL</th>
+            <th scope="col">MOBILE</th>
+          </tr>
+        </thead>
+        <tbody>
+          {userList.map((item) => {
+            return (
+              <tr>
+                <td>{item.id}</td>
+                <td>{item.username}</td>
+                <td>*****</td>
+                <td>{item.email}</td>
+                <td>{item.mobile}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 }
